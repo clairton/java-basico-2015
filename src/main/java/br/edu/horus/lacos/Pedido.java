@@ -6,6 +6,8 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class Pedido {
 	private Collection<Item> items = new ArrayList<Item>();
@@ -51,6 +53,20 @@ public class Pedido {
 			}
 		});
 		return list;
+	}
+
+	public Item pesquisarPorNome(String nome) {
+		return items.stream()
+					//.filter(i -> i.getNome().equals(nome))
+					.filter(new Predicate<Item>() {
+	
+						@Override
+						public boolean test(Item t) {
+							return t.getNome().equals(nome);
+						}
+					})
+					.collect(Collectors.toList())
+					.get(0);		
 	}
 	
 	

@@ -53,9 +53,19 @@ public class PedidoTest {
 		assertEquals(nome, items.iterator().next().getNome());
 	}
 	
+	@Test
+	public void testItemPesquisaPorNome(){
+		String nome = "Pera";
+		Item abacaxi = new Item(nome, 2.04);
+		pedido.adicionar(abacaxi);
+		pedido.pesquisarPorNome(nome);
+	}
 	
 	
-	
+	@Test
+	public void testItemPesquisaPorNomeInexistente(){
+		pedido.pesquisarPorNome("xpto");
+	}
 	
 	
 	
