@@ -55,11 +55,12 @@ public class Pedido {
 		return list;
 	}
 
-	public Item pesquisarPorNome(String nome) {
-		return items.stream()
+	public Item pesquisarPorNome(String nome) throws ItemNaoExisteException {
+		try{			
+			return items.stream()
 					//.filter(i -> i.getNome().equals(nome))
 					.filter(new Predicate<Item>() {
-	
+						
 						@Override
 						public boolean test(Item t) {
 							return t.getNome().equals(nome);
@@ -67,6 +68,9 @@ public class Pedido {
 					})
 					.collect(Collectors.toList())
 					.get(0);		
+		}catch(IndexOutOfBoundsException e){
+			throw new ItemNaoExisteException(nome);
+		}
 	}
 	
 	

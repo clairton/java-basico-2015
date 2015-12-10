@@ -58,31 +58,17 @@ public class PedidoTest {
 		String nome = "Pera";
 		Item abacaxi = new Item(nome, 2.04);
 		pedido.adicionar(abacaxi);
-		pedido.pesquisarPorNome(nome);
+		try {
+			pedido.pesquisarPorNome(nome);
+		} catch (ItemNaoExisteException e) {
+			e.getMessage();//retorna o "Item com o nome "" não encontrado"
+			//fazer algo porque o item com o nome pesquisa não existe
+		}
 	}
 	
 	
-	@Test
-	public void testItemPesquisaPorNomeInexistente(){
+	@Test(expected = ItemNaoExisteException.class)
+	public void testItemPesquisaPorNomeInexistente() throws ItemNaoExisteException{
 		pedido.pesquisarPorNome("xpto");
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
 }
