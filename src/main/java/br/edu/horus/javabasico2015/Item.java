@@ -5,7 +5,8 @@ import java.util.Random;
 public class Item extends Identificavel {
 	private Integer id = new Random().nextInt();
 	
-	private @Identificador String nome;
+	@Identificador(isCaseSensitive = false)
+	private String nome;
 	
 	private Double valor;
 	
