@@ -1,19 +1,25 @@
 package br.edu.horus.javabasico2015;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.junit.Before;
 import org.junit.Test;
 
 public class MapTest {
-	private Map<Integer, Item> itens;
+	private MapItem itens;
+	private Integer id;//armaena o id gerado para abobora
 	
 	@Before
 	public void init(){
-		itens = new HashMap<>();
+		itens = new MapItem();
 		Item abobora = new Item("abobora", 2.8d);
+		//setamo o id gerado para abobora
+		id = abobora.getId();
 		itens.put(abobora.getId(), abobora);
+	}
+	
+	@Test
+	public void testRecuperar(){
+		//recuperar o abobora
+		itens.get(id);
 	}
 	
 	@Test
