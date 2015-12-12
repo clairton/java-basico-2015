@@ -18,7 +18,7 @@ public class Pedido extends Identificavel{
 		items.addAll(Arrays.asList(item));
 	}
 	
-	public void remover(Identificavel item) {
+	public void remover(Item item) {
 		items.remove(item);
 	}
 
