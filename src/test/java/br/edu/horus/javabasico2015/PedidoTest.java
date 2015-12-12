@@ -19,7 +19,7 @@ public class PedidoTest {
 	public void inicio(){
 		pedido.limpar();		
 		Item abacaxi = new Item("Abacaxi", 2.04);
-		Item jabuticaba = new Item("Jabuticaba", 3.19);
+		Identificavel jabuticaba = new Item("Jabuticaba", 3.19);
 		pedido.adicionar(abacaxi, jabuticaba);
 	}
 

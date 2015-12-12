@@ -9,14 +9,16 @@ import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-public class Pedido {
+public class Pedido extends Identificavel{
+
+	@Identificador
 	private Collection<Item> items = new ArrayList<Item>();
 
 	public void adicionar(Item... item) {
 		items.addAll(Arrays.asList(item));
 	}
 	
-	public void remover(Item item) {
+	public void remover(Identificavel item) {
 		items.remove(item);
 	}
 
@@ -55,7 +57,7 @@ public class Pedido {
 		return list;
 	}
 
-	public Item pesquisarPorNome(String nome) throws ItemNaoExisteException {
+	public Identificavel pesquisarPorNome(String nome) throws ItemNaoExisteException {
 		try{			
 			return items.stream()
 					//.filter(i -> i.getNome().equals(nome))

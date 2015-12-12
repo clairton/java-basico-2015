@@ -1,8 +1,8 @@
 package br.edu.horus.javabasico2015;
 
-import org.junit.Test;
+import static org.junit.Assert.assertFalse;
 
-import br.edu.horus.javabasico2015.Item;
+import org.junit.Test;
 
 public class ItemTest {
 
@@ -11,5 +11,11 @@ public class ItemTest {
 		Item item = new Item("Pão", 1.01);
 		System.out.println(item.getNome());
 	}
-
+	
+	@Test
+	public void testIsEquals(){
+		Identificavel uva = new Item("Uva", 3.02d);
+		Identificavel morango = new Item("Morango", 3.02d);
+		assertFalse(uva.equals(morango));
+	}
 }
