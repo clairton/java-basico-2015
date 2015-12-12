@@ -26,13 +26,16 @@ public class Identificavel {
 						Object v1 = field.get(this);
 						Object v2 = field.get(obj);
 						
-						if(annotation.isCaseSensitive()){
-							if(v1 == null || v1.toString().equalsIgnoreCase(v2.toString())){
+						if(!annotation.isCaseSensitive()){
+							if(!(v1 instanceof String)){
+								throw new RuntimeException(
+									"Para usar Identificador#isCaseSensitive:false deve ser String"
+								);
+							}							
+							if(v1 == null || !v1.toString().equalsIgnoreCase(v2.toString())){
 								return false;
 							}
-						}
-						
-						if (v1 == null || !v1.equals(v2)) {
+						} else if (v1 == null || !v1.equals(v2)) {
 							return false;
 						}
 					}
