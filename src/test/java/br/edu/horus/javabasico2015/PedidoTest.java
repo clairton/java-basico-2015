@@ -1,4 +1,4 @@
-package br.edu.horus.lacos;
+package br.edu.horus.javabasico2015;
 
 
 import static org.junit.Assert.assertEquals;
@@ -7,6 +7,10 @@ import java.util.Collection;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import br.edu.horus.javabasico2015.Item;
+import br.edu.horus.javabasico2015.ItemNaoExisteException;
+import br.edu.horus.javabasico2015.Pedido;
 
 public class PedidoTest {
 	private Pedido pedido = new Pedido();	

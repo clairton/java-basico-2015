@@ -1,4 +1,4 @@
-package br.edu.horus.lacos;
+package br.edu.horus.javabasico2015;
 
 import java.util.ArrayList;
 import java.util.Arrays;

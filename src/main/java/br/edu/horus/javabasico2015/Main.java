@@ -1,4 +1,4 @@
-package lacos;
+package br.edu.horus.javabasico2015;
 
 //esse é um comentário de uma linha
 

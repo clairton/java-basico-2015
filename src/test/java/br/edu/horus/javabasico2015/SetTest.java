@@ -1,4 +1,4 @@
-package br.edu.horus.lacos;
+package br.edu.horus.javabasico2015;
 
 import static org.junit.Assert.assertEquals;
 
@@ -6,6 +6,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.junit.Test;
+
+import br.edu.horus.javabasico2015.Item;
 
 public class SetTest {
 

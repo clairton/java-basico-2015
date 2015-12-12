@@ -1,6 +1,8 @@
-package br.edu.horus.lacos;
+package br.edu.horus.javabasico2015;
 
 import org.junit.Test;
+
+import br.edu.horus.javabasico2015.Item;
 
 public class ItemTest {
 
