@@ -31,4 +31,8 @@ public class Item extends Identificavel {
 	public int hashCode() {
 		return this.nome.toLowerCase().hashCode();
 	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
 }
