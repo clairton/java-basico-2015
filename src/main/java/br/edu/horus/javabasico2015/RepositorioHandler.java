@@ -19,6 +19,7 @@ public class RepositorioHandler implements InvocationHandler {
 	public Object invoke(Object proxy, 
 				Method method, 
 				Object[] args) throws Throwable {
+		
 		if(method.isAnnotationPresent(Transacional.class)){			
 			conexao.setAutoCommit(false);
 			Object retorno;
