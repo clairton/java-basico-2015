@@ -55,13 +55,13 @@ public class ReflectionTest {
 	
 	@Test
 	public void testString(){
-		String nome = "abc";
+		StringBuilder nome = new StringBuilder("abc");
 		foo(nome);
 		System.out.println(nome);
 	}
 	
-	public void foo(String nome){
-		nome = "def";
+	public void foo(StringBuilder nome){
+		nome.append("def");
 	}
 	
 	
