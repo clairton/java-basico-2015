@@ -1,6 +1,6 @@
 package br.edu.horus.javabasico2015;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -27,12 +27,27 @@ public class RepositorioItemTest {
 		
 		conexao.createStatement().executeQuery(sql);
 		
-		repositorio = new RepositorioItem(conexao);
+		repositorio = RepositorioItem.getInstance(conexao);
 	}
 
 	@Test
-	public void test() {
-		fail("Not yet implemented");
+	public void test() throws SQLException {
+		Item item = new Item("Abacate", 2.5d);
+		repositorio.salvar(item);
+		assertNotNull(item.getId());
 	}
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

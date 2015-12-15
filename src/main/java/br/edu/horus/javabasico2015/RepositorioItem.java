@@ -1,5 +1,7 @@
 package br.edu.horus.javabasico2015;
 
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Proxy;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -26,7 +28,7 @@ public class RepositorioItem implements Repositorio<Item> {
 		statement.setDouble(2, entidade.getValor());
 		
 		//executa o comando no banco de dados
-		statement.executeQuery();
+		statement.executeUpdate();
 		
 		//retorna os dados gerados automaticamente pelo banco
 		ResultSet keys = statement.getGeneratedKeys();
@@ -37,5 +39,43 @@ public class RepositorioItem implements Repositorio<Item> {
 		
 		return entidade;
 	}
+	
+	
+	public static Repositorio<Item> getInstance(Connection conexao){
+		InvocationHandler handler = new RepositorioHandler(
+			new RepositorioItem(conexao),
+			conexao
+		);
+		return (Repositorio<Item>) Proxy.newProxyInstance(
+			RepositorioItem.class.getClassLoader(), 
+			new Class<?>[]{Repositorio.class}, 
+			handler
+		);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }

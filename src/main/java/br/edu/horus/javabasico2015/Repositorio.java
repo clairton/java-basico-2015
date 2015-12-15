@@ -4,6 +4,7 @@ import java.sql.SQLException;
 
 public interface Repositorio<T> {
 
+	@Transacional
 	T salvar(T entidade) throws SQLException;
 	
 }
