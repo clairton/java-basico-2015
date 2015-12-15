@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<itens>
+	<item id="1">
+		<nome>Melancia</nome>
+		<valor>3.0</valor>
+	</item>
+	<item id="2">
+		<nome>Pêssego</nome>
+		<valor>4.9</valor>
+	</item>
+</itens>

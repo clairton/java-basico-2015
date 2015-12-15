@@ -40,28 +40,7 @@ public class FileTest {
 								.filter(l -> l.startsWith("c"))
 								.collect(Collectors.toList());
 		for (String linha : cs) {
-			System.err.println(linha);
+			System.out.println(linha);
 		}
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }
