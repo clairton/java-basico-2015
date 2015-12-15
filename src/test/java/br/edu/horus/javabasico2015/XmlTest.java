@@ -87,11 +87,11 @@ public class XmlTest {
 		Element item = doc.createElement("item");
 		Attr id = doc.createAttribute("id");
 		id.setValue("1");
-		item.setAttributeNode(id);//****
+		item.setAttributeNode(id);
 		itens.appendChild(item);
 		
 		Element nome = doc.createElement("nome");
-		nome.appendChild(doc.createTextNode("Jaspion"));//****
+		nome.appendChild(doc.createTextNode("Jaspion"));
 		item.appendChild(nome);
 		
 		TransformerFactory transformerFactory = TransformerFactory.newInstance();
@@ -101,46 +101,6 @@ public class XmlTest {
 		StreamResult result = new StreamResult("target/itens.xml");
 		transformer.transform(source, result);
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	@Test
 	public void testXpath() throws Exception{
@@ -156,17 +116,5 @@ public class XmlTest {
 		XPathExpression expr = xpath.compile("/items/item[@id='1']/nome/text()");
 		System.err.println((String) expr.evaluate(document, XPathConstants.STRING));
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 }
