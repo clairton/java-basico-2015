@@ -43,4 +43,14 @@ public class FileTest {
 			System.out.println(linha);
 		}
 	}
+	
+	@Test
+	public void testDiretorios() throws Exception{
+		File target = new File("target/novaPasta");
+		if(!target.exists()){
+			Files.createDirectory(target.toPath());
+		}
+	}	
+	
+	
 }

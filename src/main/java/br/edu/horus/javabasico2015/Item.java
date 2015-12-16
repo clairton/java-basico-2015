@@ -2,10 +2,14 @@ package br.edu.horus.javabasico2015;
 
 import java.util.Random;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+
+@XStreamAlias("item")
 public class Item extends Identificavel {
 	private Integer id = new Random().nextInt();
 	
 	@Identificador(isCaseSensitive = false)
+	@XStreamAlias("xpto")
 	private String nome;
 	
 	private Double valor;

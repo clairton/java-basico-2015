@@ -104,7 +104,6 @@ public class XmlTest {
 	
 	@Test
 	public void testXpath() throws Exception{
-
 		DocumentBuilderFactory factory 
 			= DocumentBuilderFactory.newInstance();
 		DocumentBuilder builder = factory.newDocumentBuilder();
@@ -115,6 +114,5 @@ public class XmlTest {
 		XPath xpath = xPathfactory.newXPath();
 		XPathExpression expr = xpath.compile("/items/item[@id='1']/nome/text()");
 		System.err.println((String) expr.evaluate(document, XPathConstants.STRING));
-	}
-	
+	}	
 }
