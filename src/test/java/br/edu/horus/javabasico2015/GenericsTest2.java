@@ -16,6 +16,10 @@ public class GenericsTest2 {
 		Item banana = new Item("banana", 4.6d);
 		
 		notaFiscal.adicionar(banana);
+		
+		Notificacao email = new Email();
+		
+		email.enviar(notaFiscal);
 	}
 	
 }

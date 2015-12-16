@@ -9,9 +9,11 @@ import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-public class Pedido extends Identificavel{
-
+public class Pedido extends Identificavel implements Enviavel{
 	private Pessoa cliente;
+
+	@Identificador
+	private Collection<Item> items = new ArrayList<Item>();
 
 	public Pedido(){}
 	
@@ -19,9 +21,16 @@ public class Pedido extends Identificavel{
 		this.cliente = pessoa;
 	}
 	
-	@Identificador
-	private Collection<Item> items = new ArrayList<Item>();
-
+	@Override
+	public String getConteudo() {
+		StringBuilder conteudo = new StringBuilder();
+		conteudo.append(cliente.getNome());
+		
+		
+		
+		return conteudo.toString();
+	}
+	
 	public void adicionar(Item... item) {
 		items.addAll(Arrays.asList(item));
 	}
@@ -82,17 +91,4 @@ public class Pedido extends Identificavel{
 			throw new ItemNaoExisteException(nome);
 		}
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }
