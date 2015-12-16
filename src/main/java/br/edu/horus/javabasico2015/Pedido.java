@@ -11,6 +11,14 @@ import java.util.stream.Collectors;
 
 public class Pedido extends Identificavel{
 
+	private Pessoa cliente;
+
+	public Pedido(){}
+	
+	public Pedido(Pessoa pessoa){
+		this.cliente = pessoa;
+	}
+	
 	@Identificador
 	private Collection<Item> items = new ArrayList<Item>();
 
