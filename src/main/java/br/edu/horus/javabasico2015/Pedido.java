@@ -24,10 +24,13 @@ public class Pedido extends Identificavel implements Enviavel{
 	@Override
 	public String getConteudo() {
 		StringBuilder conteudo = new StringBuilder();
-		conteudo.append(cliente.getNome());
+		conteudo.append(cliente.getNome() + "\n");
 		
+		for (Item item : items) {
+			conteudo.append(item.getNome() + " -> " + item.getValor() + "\n");
+		}
 		
-		
+		conteudo.append("Total R$: " + totalizar());
 		return conteudo.toString();
 	}
 	
