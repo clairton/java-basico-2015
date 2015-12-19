@@ -10,6 +10,11 @@ public class ClienteTest {
 	public void test() {
 		Pessoa pessoa = new PessoaFisica("Mercado Bom", LocalDate.of(2015, 1, 1));
 		Cliente mercadoBom = new Cliente(pessoa);
+		
+		PessoaFisica pessoaFisica = mercadoBom.getPessoa();
+		
+		pessoaFisica.getNascidoEm();
+		pessoaFisica.getNome();
 	}
 
 }
