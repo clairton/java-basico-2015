@@ -10,6 +10,21 @@ public class PessoaFisica extends Pessoa {
 		this.nascidoEm = nascidoEm;
 	}
 	
+	public void setCpf(Cpf cpf){
+		adicionar(cpf);
+	}
+	
+	@Override
+	public void adicionar(Documento documento) {
+		if(getDocumentos()
+			.stream()
+			.filter(d -> Cpf.class.equals(d.getClass()))
+			.count() > 0){
+			throw new RuntimeException("ja existe um cpf, remova antes de add");
+		}
+		super.adicionar(documento);
+	}
+	
 	public LocalDate getNascidoEm() {
 		return nascidoEm;
 	}
