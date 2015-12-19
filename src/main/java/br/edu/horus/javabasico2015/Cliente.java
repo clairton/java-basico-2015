@@ -25,4 +25,8 @@ public class Cliente {
 	public BigDecimal getDesconto() {
 		return desconto;
 	}
+	
+	public String getNome() {
+		return pessoa.getNome();
+	}
 }

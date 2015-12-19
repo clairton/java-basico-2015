@@ -10,15 +10,20 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class Pedido extends Identificavel implements Enviavel{
-	private Pessoa cliente;
+	private Cliente cliente;
 
 	@Identificador
 	private Collection<Item> items = new ArrayList<Item>();
 
 	public Pedido(){}
 	
+	@Deprecated
 	public Pedido(Pessoa pessoa){
-		this.cliente = pessoa;
+		this.cliente = new Cliente(pessoa);
+	}
+	
+	public Pedido(Cliente cliente){
+		this.cliente = cliente;
 	}
 	
 	@Override
@@ -44,9 +49,7 @@ public class Pedido extends Identificavel implements Enviavel{
 
 	public Collection<Item> getItems() {
 		return Collections.unmodifiableCollection(items);
-	}
-	
-	
+	}	
 
 	public Double totalizar(){
 		/*Double total = 0d;
