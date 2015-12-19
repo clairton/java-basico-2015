@@ -1,5 +1,6 @@
 package br.edu.horus.javabasico2015;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -10,6 +11,14 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class Pedido extends Identificavel implements Enviavel{
+	/*
+	 * o "final" deixa o valor ser atribuido apenas uma vez, 
+	 * podendo ser iniciado no construtor,
+	 * adicionando o "static" o valor deve ser atribuido
+	 * na declaração da variavel, sendo uma constante"
+	 */
+	private final static BigDecimal CEM = new BigDecimal(100);
+	
 	private Cliente cliente;
 
 	@Identificador
@@ -26,10 +35,24 @@ public class Pedido extends Identificavel implements Enviavel{
 		this.cliente = cliente;
 	}
 	
+	public BigDecimal getDesconto(){
+		return 
+			(cliente == null ? BigDecimal.ZERO : cliente.getDesconto())
+			.setScale(2, BigDecimal.ROUND_HALF_EVEN);
+	}
+	
+	public Boolean isTemDesconto(){
+		return getDesconto().doubleValue() > 0;
+	}
+	
 	@Override
 	public String getConteudo() {
 		StringBuilder conteudo = new StringBuilder();
 		conteudo.append(cliente.getNome() + "\n");
+		
+		if(isTemDesconto()){
+			conteudo.append("Você teve " + getDesconto() + "% de desconto.\n");			
+		}
 		
 		for (Item item : items) {
 			conteudo.append(item.getNome() + " -> " + item.getValor() + "\n");
@@ -57,7 +80,24 @@ public class Pedido extends Identificavel implements Enviavel{
 			total += item.getValor();
 		}		
 		return total;*/
-		return items.stream().mapToDouble(i -> i.getValor()).sum();
+		BigDecimal total = new BigDecimal(items.stream()
+								.mapToDouble(i -> i.getValor())
+								.sum());
+		
+		/*
+		 * expressão ternaria, é if else mais "resumido"
+		 * nesses caso, se o cliente for nulo, o desconto sera
+		 * zero, do contrário será o desconto do cliente
+		 */
+		BigDecimal desconto = 
+				cliente == null ? BigDecimal.ZERO : cliente.getDesconto();
+		
+		BigDecimal valorDesconto = total
+									.multiply(desconto)
+									.divide(CEM)
+									.setScale(2, BigDecimal.ROUND_HALF_EVEN);
+		
+		return total.subtract(valorDesconto).doubleValue();
 	}
 	
 	public Integer contar(){

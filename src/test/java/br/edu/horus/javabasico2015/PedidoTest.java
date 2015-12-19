@@ -3,6 +3,8 @@ package br.edu.horus.javabasico2015;
 
 import static org.junit.Assert.assertEquals;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Collection;
 
 import org.junit.Before;
@@ -37,6 +39,16 @@ public class PedidoTest {
 	@Test
 	public void testTotalizar(){
 		assertEquals(Double.valueOf(5.23), pedido.totalizar());
+	}
+	
+	@Test
+	public void testTotalizarComDesconto(){
+		Pessoa pessoa = new PessoaFisica("Pedro", LocalDate.of(1, 1, 1));
+		BigDecimal desconto = new BigDecimal("9.98");
+		Cliente cliente = new Cliente(pessoa, desconto);
+		Pedido pedido = new Pedido(cliente);
+		pedido.adicionar(new Item("", 66.66d));
+		assertEquals(Double.valueOf(60.01), pedido.totalizar());
 	}
 	
 	@Test(expected = UnsupportedOperationException.class)
