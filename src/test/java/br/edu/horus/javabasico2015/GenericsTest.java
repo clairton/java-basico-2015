@@ -12,6 +12,7 @@ public class GenericsTest {
 		}
 	}	
 	
+	@SuppressWarnings({ "unused", "rawtypes", "unchecked" })
 	public void test(){
 		//em tempo de compilação
 		Box<String> b = new Box<String>("xpto");

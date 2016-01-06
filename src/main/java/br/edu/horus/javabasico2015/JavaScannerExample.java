@@ -25,6 +25,8 @@ public class JavaScannerExample
     int age = scanner.nextInt();
 
     System.out.println(String.format("%s, your age is %d", username, age));
+    
+    scanner.close();
 
   }
 

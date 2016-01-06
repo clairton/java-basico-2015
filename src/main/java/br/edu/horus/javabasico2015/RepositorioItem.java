@@ -46,36 +46,13 @@ public class RepositorioItem implements Repositorio<Item> {
 			new RepositorioItem(conexao),
 			conexao
 		);
-		return (Repositorio<Item>) Proxy.newProxyInstance(
+		Repositorio<?> repositorio = (Repositorio<?>) Proxy.newProxyInstance(
 			RepositorioItem.class.getClassLoader(), 
 			new Class<?>[]{Repositorio.class}, 
 			handler
 		);
+		@SuppressWarnings("unchecked")
+		Repositorio<Item> repositorioItem = (Repositorio<Item>) repositorio; 
+		return repositorioItem; 
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
 }

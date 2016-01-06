@@ -24,5 +24,6 @@ public class DecoratorTest {
 	}
 	{
 		Foo f = new Xpto();
+		f.bar();
 	}
 }

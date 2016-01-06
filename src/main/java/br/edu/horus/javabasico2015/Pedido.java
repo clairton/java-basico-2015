@@ -19,6 +19,7 @@ public class Pedido extends Identificavel implements Enviavel{
 	 */
 	private final static BigDecimal CEM = new BigDecimal(100);
 	
+	@Identificador
 	private Cliente cliente;
 
 	@Identificador

@@ -18,6 +18,6 @@ public class Main {
 
 	public static void main(String[] args) {
 		String[] nomes = {"Hello Word!", "João", "Pedro", "Juca"};	
-		
+		System.err.println(nomes);
 	}
 }

@@ -104,8 +104,7 @@ public class XmlTest {
 	
 	@Test
 	public void testXpath() throws Exception{
-		DocumentBuilderFactory factory 
-			= DocumentBuilderFactory.newInstance();
+		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder builder = factory.newDocumentBuilder();
 		String nome = "src/test/resources/itens.xml";
 		Document document = builder.parse(new File(nome));

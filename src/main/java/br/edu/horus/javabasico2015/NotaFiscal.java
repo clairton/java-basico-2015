@@ -1,11 +1,11 @@
 package br.edu.horus.javabasico2015;
 
-public class Produto extends Item{
+public class NotaFiscal extends Pedido{
 	
 	private @Identificador String codigo;
 	
-	public Produto(String codigo, String nome, Double valor) {
-		super(nome, valor);
+	public NotaFiscal(String codigo, Cliente cliente) {
+		super(cliente);
 		this.codigo = codigo;
 	}
 
