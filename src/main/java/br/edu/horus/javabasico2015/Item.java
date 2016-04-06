@@ -2,10 +2,16 @@ package br.edu.horus.javabasico2015;
 
 import java.util.Random;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
 @XStreamAlias("item")
+@Entity
 public class Item extends Identificavel {
+	
+	@Id
 	private Integer id = new Random().nextInt();
 	
 	@Identificador(isCaseSensitive = false)
@@ -13,6 +19,9 @@ public class Item extends Identificavel {
 	private String nome;
 	
 	private Double valor;
+	
+	@Deprecated
+	public Item() {}	
 	
 	public Item(String nome, Double valor){
 		this.valor = valor;
