@@ -3,6 +3,7 @@ package br.edu.horus.javabasico2015;
 import java.time.LocalDate;
 
 import javax.persistence.Column;
+import javax.persistence.Convert;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -13,6 +14,7 @@ import javax.persistence.Table;
 public class PessoaFisica extends Pessoa {
 	
 	@Column(name = "nascido_em")
+	@Convert(converter = LocalDateConverter.class)
 	private LocalDate nascidoEm;
 	
 	@Deprecated

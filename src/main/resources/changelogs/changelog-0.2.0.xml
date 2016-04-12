@@ -27,5 +27,18 @@
 				<constraints nullable="false"/>
 			</column>
 		</createTable>
+		
+		<createTable tableName="cliente">
+			<column name="id" type="bigint" autoIncrement="true" startWith="1" incrementBy="1">
+				<constraints nullable="false" primaryKey="true" primaryKeyName="cliente_pk"/>
+			</column>
+			<column name="pessoa_id" type="bigint">
+				<constraints  nullable="false" foreignKeyName="cliente_pessoa_fk" 
+						referencedTableName="pessoa" referencedColumnNames="id"/>
+			</column>
+			<column name="desconto" type="decimal(10, 2)">
+				<constraints nullable="false"/>
+			</column>			
+		</createTable>
 	</changeSet>
 </databaseChangeLog>

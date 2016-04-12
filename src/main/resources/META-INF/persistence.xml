@@ -8,6 +8,7 @@
 		<class>br.edu.horus.javabasico2015.Pedido</class>
 		<class>br.edu.horus.javabasico2015.Pessoa</class>
 		<class>br.edu.horus.javabasico2015.PessoaFisica</class>
+		<class>br.edu.horus.javabasico2015.Cliente</class>
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbc.JDBCDriver" />
