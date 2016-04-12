@@ -7,20 +7,25 @@ import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 
 import org.junit.BeforeClass;
+import org.junit.ClassRule;
 import org.junit.Test;
+import org.junit.rules.TestRule;
 
 public class ItemIntegrationTest {
 	private static EntityManager manager;
 	
+	@ClassRule
+	public static TestRule rule = new LiquibaseRule();
+
 	@BeforeClass
-	public static void setUp(){
-		manager = Persistence.createEntityManagerFactory("default").createEntityManager();		
+	public static void setUp() {
+		manager = Persistence.createEntityManagerFactory("default").createEntityManager();
 	}
 
 	@Test
 	public void test() {
 		/*
-		 * exemplo para persistir um objeto 
+		 * exemplo para persistir um objeto
 		 */
 		Item item = new Item("havaianas", 3.0);
 		manager.getTransaction().begin();
@@ -30,7 +35,7 @@ public class ItemIntegrationTest {
 	}
 
 	@Test
-	public void testConsulta(){
+	public void testConsulta() {
 		/*
 		 * exemplo usando JPQL(Java Persisten Query Language)
 		 */

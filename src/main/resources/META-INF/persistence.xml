@@ -6,13 +6,15 @@
 	<persistence-unit name="default" transaction-type="RESOURCE_LOCAL">
 		<class>br.edu.horus.javabasico2015.Item</class>
 		<class>br.edu.horus.javabasico2015.Pedido</class>
+		<class>br.edu.horus.javabasico2015.Pessoa</class>
+		<class>br.edu.horus.javabasico2015.PessoaFisica</class>
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbc.JDBCDriver" />
 			<property name="javax.persistence.jdbc.url" value="jdbc:hsqldb:file:target/test;hsqldb.lock_file=false;create=true" />
 			<property name="javax.persistence.jdbc.user" value="sa" />
 			<property name="javax.persistence.jdbc.password" value="" />
-			<property name="javax.persistence.schema-generation.database.action" value="drop-and-create" />
+			<property name="javax.persistence.schema-generation.database.action" value="none" />
 			<property name="hibernate.show_sql" value="true"/>
 		</properties>
 	</persistence-unit>

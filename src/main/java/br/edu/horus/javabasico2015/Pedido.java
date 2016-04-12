@@ -15,6 +15,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
@@ -38,6 +40,8 @@ public class Pedido extends Identificavel implements Enviavel{
 
 	@Identificador
 	@OneToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "pedido_item", joinColumns = @JoinColumn(name = "pedido_id")
+			, inverseJoinColumns = @JoinColumn(name = "item_id") )
 	private Collection<Item> items = new ArrayList<Item>();
 
 	public Pedido(){}

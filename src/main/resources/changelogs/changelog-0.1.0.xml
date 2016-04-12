@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+	<changeSet id="1" author="clairton.rodrigo@gmail.com">
+		<createTable tableName="item" remarks="Tabela de itens do pedido">
+			<column name="id" type="bigint" autoIncrement="true" startWith="1" incrementBy="1">
+				<constraints nullable="false" primaryKey="true" primaryKeyName="item_pk"/>
+			</column>
+			<column name="nome" type="varchar(100)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="valor" type="numeric(10,2)">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
+	</changeSet>
+	<changeSet id="2" author="clairton.rodrigo@gmail.com">
+		<createTable tableName="pedido">
+			<column name="id" type="bigint" autoIncrement="true" startWith="1" incrementBy="1">
+				<constraints nullable="false" primaryKey="true" primaryKeyName="pedido_pk"/>
+			</column>
+		</createTable>
+		<createTable tableName="pedido_item">		
+			<column name="pedido_id" type="bigint">
+				<constraints foreignKeyName="fk_pedido_item_pedido"
+					referencedTableName="pedido" referencedColumnNames="id" nullable="false"/>
+			</column>
+			<column name="item_id" type="bigint">
+				<constraints foreignKeyName="fk_pedido_item_item" 
+					referencedTableName="item" referencedColumnNames="id" nullable="false"/>
+			</column>
+		</createTable>
+	</changeSet>
+</databaseChangeLog>

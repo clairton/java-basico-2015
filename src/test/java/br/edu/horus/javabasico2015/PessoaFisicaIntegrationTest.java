@@ -1,5 +1,7 @@
 package br.edu.horus.javabasico2015;
 
+import java.time.LocalDate;
+
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 
@@ -7,7 +9,7 @@ import org.junit.ClassRule;
 import org.junit.Test;
 import org.junit.rules.TestRule;
 
-public class PedidoIntegrationTest {
+public class PessoaFisicaIntegrationTest {
 
 	@ClassRule
 	public static TestRule rule = new LiquibaseRule();
@@ -15,15 +17,11 @@ public class PedidoIntegrationTest {
 	private static EntityManager manager = Persistence.createEntityManagerFactory("default")
 															.createEntityManager();
 
-	
-	
 	@Test
 	public void test() {
-		Pedido pedido = new Pedido();
-		Item item = new Item("banana", 1.0);
-		pedido.adicionar(item);
+		Pessoa pessoa = new PessoaFisica("João", LocalDate.of(2000, 10, 31));
 		manager.getTransaction().begin();
-		manager.persist(pedido);
+		manager.persist(pessoa);
 		manager.getTransaction().commit();
 	}
 
