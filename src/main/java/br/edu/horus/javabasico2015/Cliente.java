@@ -23,6 +23,9 @@ public class Cliente {
 	
 	private BigDecimal desconto = BigDecimal.ZERO;
 	
+	@Deprecated
+	public Cliente(){}
+	
 	public Cliente(Pessoa pessoa){
 		this.pessoa = pessoa;
 	}

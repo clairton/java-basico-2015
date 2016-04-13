@@ -41,4 +41,12 @@
 			</column>			
 		</createTable>
 	</changeSet>
+	<changeSet id="2" author="clairton.rodrigo@gmail.com">
+		<addColumn tableName="pedido">
+			<column name="cliente_id" type="bigint">
+				<constraints  nullable="false" foreignKeyName="pedido_cliente_fk" 
+						referencedTableName="cliente" referencedColumnNames="id"/>
+			</column>
+		</addColumn>
+	</changeSet>
 </databaseChangeLog>

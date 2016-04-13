@@ -18,9 +18,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
-import javax.persistence.Transient;
+import javax.persistence.OneToOne;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.NotNull;
 
 @Entity
+@ValidaTotal
 public class Pedido extends Identificavel implements Enviavel{
 	/*
 	 * o "final" deixa o valor ser atribuido apenas uma vez, 
@@ -35,7 +38,8 @@ public class Pedido extends Identificavel implements Enviavel{
 	private Integer id;
 	
 	@Identificador
-	@Transient
+	@OneToOne
+	@JoinColumn(name = "cliente_id")
 	private Cliente cliente;
 
 	@Identificador
@@ -44,6 +48,10 @@ public class Pedido extends Identificavel implements Enviavel{
 			, inverseJoinColumns = @JoinColumn(name = "item_id") )
 	private Collection<Item> items = new ArrayList<Item>();
 
+	@NotNull
+	@DecimalMin("0.01")
+	private Double total;
+	
 	public Pedido(){}
 	
 	@Deprecated
@@ -117,7 +125,8 @@ public class Pedido extends Identificavel implements Enviavel{
 									.divide(CEM)
 									.setScale(2, BigDecimal.ROUND_HALF_EVEN);
 		
-		return total.subtract(valorDesconto).doubleValue();
+		this.total = total.subtract(valorDesconto).doubleValue();
+		return this.total;
 	}
 	
 	public Integer contar(){
@@ -157,4 +166,15 @@ public class Pedido extends Identificavel implements Enviavel{
 			throw new ItemNaoExisteException(nome);
 		}
 	}
+
+	public Double getTotal() {
+		return total;
+	}
+	
+	
+	
+	
+	
+	
+	
 }

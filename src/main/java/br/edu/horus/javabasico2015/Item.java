@@ -4,6 +4,9 @@ import java.util.Random;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
@@ -16,8 +19,11 @@ public class Item extends Identificavel {
 	
 	@Identificador(isCaseSensitive = false)
 	@XStreamAlias("xpto")
+	@NotNull
+	@Size(min=10)
 	private String nome;
 	
+	@DecimalMin("0.01")
 	private Double valor;
 	
 	@Deprecated
@@ -42,7 +48,7 @@ public class Item extends Identificavel {
 
 	@Override
 	public int hashCode() {
-		return this.nome.toLowerCase().hashCode();
+		return nome == null ? 0 : this.nome.toLowerCase().hashCode();
 	}
 
 	public void setId(Integer id) {
