@@ -2,20 +2,23 @@ package br.edu.horus.javabasico2015;
 
 import java.time.LocalDate;
 
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
-import javax.persistence.Persistence;
 
+import org.apache.deltaspike.testcontrol.api.junit.CdiTestRunner;
 import org.junit.ClassRule;
 import org.junit.Test;
 import org.junit.rules.TestRule;
+import org.junit.runner.RunWith;
 
+@RunWith(CdiTestRunner.class)
 public class PedidoIntegrationTest {
 
 	@ClassRule
 	public static TestRule rule = new LiquibaseRule();
 	
-	private static EntityManager manager = Persistence.createEntityManagerFactory("default")
-															.createEntityManager();
+	@Inject
+	private EntityManager manager;
 	
 	
 	@Test
@@ -23,7 +26,7 @@ public class PedidoIntegrationTest {
 		Pessoa pessoa = new PessoaFisica("bernadete", LocalDate.now());
 		Cliente cliente = new Cliente(pessoa);
 		Pedido pedido = new Pedido(cliente);
-		Item item = new Item("banana", 1.0);
+		Item item = new Item("banana de pijama", 1.0);
 		pedido.adicionar(item);
 		manager.getTransaction().begin();
 		manager.persist(cliente);

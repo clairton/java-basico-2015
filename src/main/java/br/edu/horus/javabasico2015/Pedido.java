@@ -92,10 +92,12 @@ public class Pedido extends Identificavel implements Enviavel{
 	
 	public void adicionar(Item... item) {
 		items.addAll(Arrays.asList(item));
+		totalizar();
 	}
 	
 	public void remover(Item item) {
 		items.remove(item);
+		totalizar();
 	}
 
 	public Collection<Item> getItems() {

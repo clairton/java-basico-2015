@@ -47,6 +47,7 @@
 				<constraints  nullable="false" foreignKeyName="pedido_cliente_fk" 
 						referencedTableName="cliente" referencedColumnNames="id"/>
 			</column>
+			<column type="decimal(10,2)" name="total"></column>
 		</addColumn>
 	</changeSet>
 </databaseChangeLog>

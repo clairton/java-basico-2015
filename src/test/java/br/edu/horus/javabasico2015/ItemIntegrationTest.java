@@ -2,32 +2,31 @@ package br.edu.horus.javabasico2015;
 
 import static org.junit.Assert.assertNotNull;
 
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
-import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 
-import org.junit.BeforeClass;
+import org.apache.deltaspike.testcontrol.api.junit.CdiTestRunner;
 import org.junit.ClassRule;
 import org.junit.Test;
 import org.junit.rules.TestRule;
+import org.junit.runner.RunWith;
 
-public class ItemIntegrationTest {
-	private static EntityManager manager;
+@RunWith(CdiTestRunner.class)
+public class ItemIntegrationTest {	
+	@Inject
+	private EntityManager manager;
 	
 	@ClassRule
 	public static TestRule rule = new LiquibaseRule();
 
-	@BeforeClass
-	public static void setUp() {
-		manager = Persistence.createEntityManagerFactory("default").createEntityManager();
-	}
 
 	@Test
 	public void test() {
 		/*
 		 * exemplo para persistir um objeto
 		 */
-		Item item = new Item("havaianas", 3.0);
+		Item item = new Item("havaianas todo mundo usa", 3.0);
 		manager.getTransaction().begin();
 		manager.persist(item);
 		manager.getTransaction().commit();
