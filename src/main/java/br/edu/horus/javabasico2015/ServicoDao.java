@@ -19,5 +19,5 @@ public class ServicoDao {
 		manager.persist(entidade);
 		manager.flush();
 		return entidade;
-	}
+	}	
 }
