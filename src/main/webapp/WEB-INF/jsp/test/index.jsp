@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %> 
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <%@ taglib uri="http://java.sun.com/jstl/fmt" prefix="fmt" %>
 
 
@@ -8,24 +8,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Pedidos</title>
+<title>Test</title>
 </head>
 <body>
-	
-	<table>
-		<tr>
-			<th>Pedido</th>
-			<th>Cliente</th>
-			<th>Total</th>
-		</tr>
-		
-		<c:forEach items="${pedidoList}" var="pedido">			
-			<tr>
-				<td>${pedido.id}</td>
-				<td>${pedido.cliente.pessoa.nome}</td>
-				<td>${pedido.total}</td>
-			</tr>
-		</c:forEach>		
-	</table>
+	${pedido}
 </body>
 </html>

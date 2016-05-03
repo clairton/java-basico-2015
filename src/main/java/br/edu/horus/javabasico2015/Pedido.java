@@ -174,9 +174,11 @@ public class Pedido extends Identificavel implements Enviavel{
 	}
 	
 	
+	public Integer getId() {
+		return id;
+	}
 	
-	
-	
-	
-	
+	public Cliente getCliente() {
+		return cliente;
+	}
 }

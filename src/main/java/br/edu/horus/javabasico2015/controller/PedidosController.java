@@ -1,25 +1,42 @@
 package br.edu.horus.javabasico2015.controller;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import br.com.caelum.vraptor.Controller;
+import br.com.caelum.vraptor.Get;
+import br.com.caelum.vraptor.Path;
+import br.com.caelum.vraptor.Result;
+import br.edu.horus.javabasico2015.Cliente;
 import br.edu.horus.javabasico2015.Pedido;
+import br.edu.horus.javabasico2015.ServicoDao;
 
 @Controller
+@Path("/pedidos")
 public class PedidosController {
+	private Result result;
+	private ServicoDao servico;
 	
+	@Deprecated
+	public PedidosController() {}
 	
-	public List<Pedido> list(){
-		List<Pedido> pedidos = new ArrayList<>();
-		pedidos.add(new Pedido());
-		return pedidos;
+	@Inject
+	public PedidosController(ServicoDao servico, Result result){
+		this.result = result;
+		this.servico = servico;
 	}
-//	private ServicoDao servico;
+	
+	
+	@Get({"/", ""})
+	public void index(){
+		List<?> pedidos = Arrays.asList(new Pedido(new Cliente()));
+		result.include("pedidos", pedidos);
+	}
 //	private Result result;
 //	
-//	@Deprecated
-//	public PedidosController() {}
+
 //	
 //	@Inject
 //	public PedidosController(ServicoDao servico, Result result){
