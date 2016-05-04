@@ -34,6 +34,10 @@ public class ServicoDao {
 		TypedQuery<T> query = manager.createQuery(q);
 		List<T> results = query.getResultList();
 		return results;
+	}
+
+	public <T>T buscar(Class<T> tipo, Integer id) {
+		return manager.find(tipo, id);
 	}	
 }
 

@@ -19,6 +19,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Transient;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
 
@@ -37,9 +38,10 @@ public class Pedido extends Identificavel implements Enviavel{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	
-	@Identificador
-	@OneToOne
-	@JoinColumn(name = "cliente_id")
+//	@Identificador
+//	@OneToOne
+//	@JoinColumn(name = "cliente_id")
+	@Transient
 	private Cliente cliente;
 
 	@Identificador

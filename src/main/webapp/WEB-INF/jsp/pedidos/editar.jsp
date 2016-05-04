@@ -19,28 +19,36 @@
 <body>
 	<div class="container">	
 		<div class="row">
-			Quantidade de pedidos: ${pedidos.size()}
-		</div>
+			Número do pedido: ${pedido.id}
+		</div>		
 		
 		<div class="row">
-			<a class="btn btn-default" href="<c:url value='/pedidos/novo'/>">Novo</a>
-		</div>
-		
-		
-		
-		<div class="row">
-			<div class="col-xs-4 col-sm-4 col-md-2 col-lg-4">Pedido</div>
-			<div class="col-xs-4 col-sm-4 col-md-8 col-lg-4">Cliente</div>
-			<div class="col-xs-4 col-sm-4 col-md-2 col-lg-4">Total</div>
+			<div class="col-xs-4 col-sm-4 col-md-2 col-lg-4">Descrição</div>
+			<div class="col-xs-4 col-sm-4 col-md-8 col-lg-4">Valor</div>
 		</div>		
 			
-		<c:forEach items="${pedidos}" var="pedido">
+		<form action="<c:url value='/pedidos/${pedido.id}'/>" method="POST">
+			<div class="col-xs-4 col-sm-4 col-md-2 col-lg-4">
+				<input type="text" name="item.nome">
+			</div>
+			<div class="col-xs-4 col-sm-4 col-md-8 col-lg-4">
+				<input type="text" name="item.valor">
+			</div>			
+			<div class="col-xs-4 col-sm-4 col-md-8 col-lg-4">
+				<input type="submit" value="Adicionar">
+			</div>
+		</form>
+			
+		<c:forEach items="${pedido.items}" var="item">
 			<div class="row">
-				<div class="col-xs-4 col-sm-4 col-md-2 col-lg-4">${pedido.id}</div>
-				<div class="col-xs-4 col-sm-4 col-md-8 col-lg-4">${pedido.cliente.pessoa.nome}</div>
-				<div class="col-xs-4 col-sm-4 col-md-2 col-lg-4">${pedido.total}</div>
+				<div class="col-xs-4 col-sm-4 col-md-2 col-lg-4">${item.nome}</div>
+				<div class="col-xs-4 col-sm-4 col-md-8 col-lg-4">${item.valor}</div>
 			</div>
 		</c:forEach>
+		
+		
+		<div class="col-xs-4 col-sm-4 col-md-2 col-lg-4">Total:</div>
+		<div class="col-xs-4 col-sm-4 col-md-8 col-lg-4">${pedido.total}</div>
 	</div>
 </body>
 </html>

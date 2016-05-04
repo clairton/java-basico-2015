@@ -1,15 +1,12 @@
 package br.edu.horus.javabasico2015.controller;
 
-import java.util.Arrays;
-import java.util.List;
-
 import javax.inject.Inject;
 
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Result;
-import br.edu.horus.javabasico2015.Cliente;
+import br.edu.horus.javabasico2015.Item;
 import br.edu.horus.javabasico2015.Pedido;
 import br.edu.horus.javabasico2015.ServicoDao;
 
@@ -31,30 +28,20 @@ public class PedidosController {
 	
 	@Get({"/", ""})
 	public void index(){
-		List<?> pedidos = Arrays.asList(new Pedido(new Cliente()));
-		result.include("pedidos", pedidos);
+		result.include("pedidos", servico.buscar(Pedido.class));
 	}
-//	private Result result;
-//	
 
-//	
-//	@Inject
-//	public PedidosController(ServicoDao servico, Result result){
-//		this.servico = servico;
-//		this.result = result;
-//	}
-//	
-//	@Get({"/", ""})
-//	public void index(){
-//		Collection<Pedido> pedidos = servico.buscar(Pedido.class);
-//		result.include("pedidos", pedidos);
-//	}
-//
-//	@Post({"/", ""})
-//	public void novo(){
-//		Pessoa pessoa = new PessoaFisica("", LocalDate.now());
-//		Cliente cliente = new Cliente(pessoa);
-//		Pedido pedido = new Pedido(cliente);
-//	}
+	@Get("/{id}")
+	public void editar(Integer id){
+		result.include("pedido", servico.buscar(Pedido.class, id));
+	}
+	
+	@Get({"/novo"})
+	public void novo(){
+		Pedido pedido = new Pedido();
+		pedido.adicionar(new Item("Banana", 5.0));
+		servico.salvar(pedido);
+		result.redirectTo(this).editar(pedido.getId());
+	}
 	
 }
