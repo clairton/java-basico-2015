@@ -22,7 +22,6 @@ public class TransactionalInterceptor {
 	public Object aoInvocar(InvocationContext context) throws Exception{
 		try {
 			manager.getTransaction().begin();
-			System.out.println("slkdfhsakjhfkjsadfhjksadhf");
 			Object object =  context.proceed();
 			manager.getTransaction().commit();
 			return object;

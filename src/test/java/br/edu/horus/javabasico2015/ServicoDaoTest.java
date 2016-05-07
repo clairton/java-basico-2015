@@ -22,5 +22,13 @@ public class ServicoDaoTest {
 		Item item = new Item("Computador Potente", 2000.01);
 		servico.salvar(item);
 	}
+	
+
+	@Test
+	public void testRemover() {
+		Item item = new Item("Computador Potente", 2000.01);
+		servico.salvar(item);
+		servico.remover(item);
+	}
 }
 

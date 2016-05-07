@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.Collections;
 
 import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,7 +16,8 @@ import javax.persistence.Transient;
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name = "tipo")
-public abstract class Pessoa {
+@DiscriminatorValue("P")
+public class Pessoa {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
