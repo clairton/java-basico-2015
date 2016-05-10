@@ -5,6 +5,7 @@ import javax.inject.Inject;
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
+import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Result;
 import br.edu.horus.javabasico2015.Item;
 import br.edu.horus.javabasico2015.Pedido;
@@ -15,17 +16,25 @@ import br.edu.horus.javabasico2015.ServicoDao;
 public class PedidosController {
 	private Result result;
 	private ServicoDao servico;
+	private Carrinho carrinho;
 	
 	@Deprecated
 	public PedidosController() {}
 	
 	@Inject
-	public PedidosController(ServicoDao servico, Result result){
+	public PedidosController(Carrinho carrinho, ServicoDao servico, Result result){
 		this.result = result;
 		this.servico = servico;
+		this.carrinho = carrinho;
 	}
 	
-	
+	@Post("/item")
+	public void adicionar(Item item){
+		carrinho.getPedido().adicionar(item);
+		result.include("pedido", carrinho.getPedido());
+		result.redirectTo(this).carrinho();
+	}
+
 	@Get({"/", ""})
 	public void index(){
 		result.include("pedidos", servico.buscar(Pedido.class));
@@ -36,12 +45,8 @@ public class PedidosController {
 		result.include("pedido", servico.buscar(Pedido.class, id));
 	}
 	
-	@Get({"/novo"})
-	public void novo(){
-		Pedido pedido = new Pedido();
-		pedido.adicionar(new Item("Banana", 5.0));
-		servico.salvar(pedido);
-		result.redirectTo(this).editar(pedido.getId());
+	@Get({"/carrinho"})
+	public void carrinho(){
+		result.include("pedido", carrinho.getPedido());
 	}
-	
 }
