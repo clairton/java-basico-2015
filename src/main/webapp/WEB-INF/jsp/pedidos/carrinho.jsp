@@ -5,7 +5,7 @@
 	<form method="POST" action="<c:url value='/pedidos/item'/>" class="form-inline">
 		<div class="form-group">
 			<input type="text" name="item.nome" class="form-control"/>
-			<input type="number" step="any" name="item.valor" class="form-control"/>
+			<input type="text" step="any" name="item.valor" class="numero form-control"/>
 			<button class="btn btn-primary" type="submit">Adicionar</button>
 		</div>
 	</form>
