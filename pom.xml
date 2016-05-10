@@ -4,7 +4,9 @@
   <artifactId>java-basico-2015</artifactId>
   <version>0.2.0-SNAPSHOT</version>
   <packaging>war</packaging>
-  
+
+	<!--slkndfskldkdshg-->  
+
   <properties>
   	<liquibase.version>3.4.2</liquibase.version>
   	<jdbc.url>jdbc:hsqldb:file:target/test;hsqldb.lock_file=false;create=true</jdbc.url>
