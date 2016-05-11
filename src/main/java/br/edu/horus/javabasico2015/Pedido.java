@@ -180,4 +180,8 @@ public class Pedido extends Identificavel implements Enviavel{
 	public Cliente getCliente() {
 		return cliente;
 	}
+
+	public void entregar(Cliente cliente) {
+		this.cliente = cliente;
+	}
 }

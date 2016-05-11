@@ -14,4 +14,9 @@ public class Carrinho implements Serializable{
 	public Pedido getPedido() {
 		return pedido;
 	}
+
+
+	public void limpar() {
+		this.pedido = new Pedido();	
+	}
 }

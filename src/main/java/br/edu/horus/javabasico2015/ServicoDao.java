@@ -38,6 +38,12 @@ public class ServicoDao {
 
 	public <T>T buscar(Class<T> tipo, Integer id) {
 		return manager.find(tipo, id);
+	}
+
+	@Transactional
+	public <T>void remover(Class<T> tipo, Integer id) {
+		T entidade = manager.find(tipo, id);
+		manager.remove(entidade);
 	}	
 }
 
