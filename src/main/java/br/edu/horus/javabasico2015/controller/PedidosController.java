@@ -3,6 +3,7 @@ package br.edu.horus.javabasico2015.controller;
 import java.math.BigDecimal;
 
 import javax.inject.Inject;
+import javax.validation.Valid;
 
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Delete;
@@ -10,6 +11,7 @@ import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Result;
+import br.com.caelum.vraptor.validator.Validator;
 import br.edu.horus.javabasico2015.Cliente;
 import br.edu.horus.javabasico2015.Item;
 import br.edu.horus.javabasico2015.Pedido;
@@ -22,16 +24,31 @@ public class PedidosController {
 	private Result result;
 	private ServicoDao servico;
 	private Carrinho carrinho;
+    private Validator validation;
 	
 	@Deprecated
 	public PedidosController() {}
 	
 	@Inject
-	public PedidosController(Carrinho carrinho, ServicoDao servico, Result result){
+	public PedidosController(
+			Carrinho carrinho, 
+			ServicoDao servico, 
+			Result result, 
+			Validator validation){
 		this.result = result;
 		this.servico = servico;
 		this.carrinho = carrinho;
+		this.validation = validation;
 	}
+	
+	@Post("/item")
+	public void adicionar(@Valid Item item){
+		validation.onErrorForwardTo(this).carrinho();
+		carrinho.getPedido().adicionar(item);
+		result.include("pedido", carrinho.getPedido());
+		result.redirectTo(this).carrinho();
+	}
+	
 	
 	@Get("/cliente")
 	public void cliente(){
@@ -54,13 +71,6 @@ public class PedidosController {
 	public void remover(Integer id){
 		servico.remover(Pedido.class, id);
 		result.redirectTo(this).index();
-	}
-	
-	@Post("/item")
-	public void adicionar(Item item){
-		carrinho.getPedido().adicionar(item);
-		result.include("pedido", carrinho.getPedido());
-		result.redirectTo(this).carrinho();
 	}
 
 	@Get({"/", ""})

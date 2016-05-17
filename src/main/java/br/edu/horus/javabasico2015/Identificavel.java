@@ -28,7 +28,7 @@ public class Identificavel {
 							Object v2 = field.get(obj);
 							
 							if(!annotation.isCaseSensitive()){
-								if(!(v1 instanceof String)){
+								if(v1 != null && !(v1 instanceof String)){
 									throw new RuntimeException(
 											"Para usar Identificador#isCaseSensitive:false deve ser String"
 											);

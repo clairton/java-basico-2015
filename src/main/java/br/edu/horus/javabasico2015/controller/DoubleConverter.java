@@ -24,7 +24,7 @@ public class DoubleConverter extends br.com.caelum.vraptor.converter.DoubleConve
 	
 	@Override
 	public Double convert(String value, Class<? extends Double> type) {
-		if(value == null){
+		if(value == null || value.isEmpty()){
 			value = "0.00";
 		}
 		value = value.replaceAll("\\.", "").replaceAll(",", ".");

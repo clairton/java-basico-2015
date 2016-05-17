@@ -4,7 +4,19 @@
 	
 	<form method="POST" action="<c:url value='/pedidos/item'/>" class="form-inline">
 		<div class="form-group">
+			<c:if test="${not empty errors.from('item.nome')}">
+				<div class="alert alert-danger">
+					<span class="glyphicon glyphicon-exclamation-sign"></span>
+					${errors.from('item.nome')}				
+				</div>
+			</c:if>
 			<input type="text" name="item.nome" class="form-control"/>
+			<c:if test="${not empty errors.from('item.valor')}">
+				<div class="alert alert-danger">
+					<span class="glyphicon glyphicon-exclamation-sign"></span>
+					${errors.from('item.valor')}				
+				</div>
+			</c:if>
 			<input type="text" step="any" name="item.valor" class="numero form-control"/>
 			<button class="btn btn-primary" type="submit">Adicionar</button>
 		</div>
